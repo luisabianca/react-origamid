@@ -1,21 +1,24 @@
 import React from 'react';
-import Arrays from './arrays';
-import Colors from './Colors';
-import Clients from './Clients';
+import Header from './Header';
+import Home from './Home';
+import Produtos from './Produtos';
 
 const App = () => {
+  const { pathname } = window.location;
 
-  
+  let Component;
+  if (pathname === '/produtos') {
+    Component = Produtos;
+  } else {
+    Component = Home;
+  }
 
   return (
-    <>
-      {/* <Clients /> */}
-
-      {/* <Arrays /> */}
-
-      <Colors />
-    </>
-  )
-}
+    <section>
+      <Header />
+      <Component />
+    </section>
+  );
+};
 
 export default App;
