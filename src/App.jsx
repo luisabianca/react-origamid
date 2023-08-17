@@ -1,45 +1,43 @@
 import React, { useState } from 'react';
-import Header from './Header';
-import Home from './Home';
-import Produtos from './Produtos';
-import ButtonModal from './ButtonModal';
-import Modal from './Modal';
+import Produto from './Produto';
 
 const App = () => {
-  const [ modal, setModal ] = useState(false);
-  const [ contar, setContar ] = useState(1);
-  const [ items, setItems ] = useState(['Item 1'])
-  const { pathname } = window.location;
+  const [isRunning, setIsRunning] = useState(false);
+  const [data, setData] = useState(null);
 
-  let Component;
-  if (pathname === '/produtos') {
-    Component = Produtos;
-  } else {
-    Component = Home;
+  const urlTablet = "https://ranekapi.origamid.dev/json/api/produto/tablet"
+  const urlSmartphone = "https://ranekapi.origamid.dev/json/api/produto/smartphone"
+  const urlNotebook = "https://ranekapi.origamid.dev/json/api/produto/notebook"
+
+  const fetchData = async (url) => {
+    try {
+      setIsRunning("Carregando...");
+      const response = await fetch(url);
+      const responseJSON = await response.json();
+      setData(responseJSON);
+    } catch (erro) {
+      console.log(erro);
+    } finally {
+      setIsRunning(false);
+    }
   }
 
-  const handleClick = () => {
-    setContar(contar + 1);
-    setItems(() => [...items, 'Item ' + (contar + 1)])
-  }
 
   return (
-    <section>
-      <Header />
+    <>
       <div>
-        {modal && 
-          <Modal modal={modal} setModal={setModal}/>
-        }
-        <ButtonModal setModal={setModal} />
+        <button onClick={() => fetchData(urlTablet)}>Tablet</button>
+
+        <button onClick={() => fetchData(urlSmartphone)} style={{ margin: "0 20px" }}>Smartphone</button>
+
+        <button onClick={() => fetchData(urlNotebook)}>Notebook</button>
       </div>
-      <Component />
+
       <div>
-        {items.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-        <button onClick={handleClick}>{contar}</button>
+        <p>{isRunning}</p>
+        {data && <Produto dados={data} />}
       </div>
-    </section>
+    </>
   );
 };
 
