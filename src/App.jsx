@@ -1,43 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Produto from './Produto';
 
 const App = () => {
-  const [isRunning, setIsRunning] = useState(null);
-  const [data, setData] = useState(null);
+  const [produto, setProduto] = useState(null);
 
-  const urlTablet = "https://ranekapi.origamid.dev/json/api/produto/tablet"
-  const urlSmartphone = "https://ranekapi.origamid.dev/json/api/produto/smartphone"
-  const urlNotebook = "https://ranekapi.origamid.dev/json/api/produto/notebook"
+  useEffect(() => {
+    const produtoLocal = window.localStorage.getItem('produto');
+    if (produtoLocal !== 'null')setProduto(produtoLocal);
+  }, []);
 
-  const fetchData = async (url) => {
-    try {
-      setIsRunning("Carregando...");
-      const response = await fetch(url);
-      const responseJSON = await response.json();
-      setData(responseJSON);
-    } catch (erro) {
-      console.log(erro);
-    } finally {
-      setIsRunning(false);
-    }
+  useEffect(() => {
+    if (produto !== null) window.localStorage.setItem('produto', produto);
+  }, [produto]);
+
+  function handleClick({ target }) {
+    setProduto(target.innerText);
   }
 
-
   return (
-    <>
-      <div>
-        <button onClick={() => fetchData(urlTablet)}>Tablet</button>
-
-        <button onClick={() => fetchData(urlSmartphone)} style={{ margin: "0 20px" }}>Smartphone</button>
-
-        <button onClick={() => fetchData(urlNotebook)}>Notebook</button>
-      </div>
-
-      <div>
-        <p>{isRunning}</p>
-        {!isRunning && data && <Produto dados={data} />}
-      </div>
-    </>
+    <div>
+      <h1>Preferência: {produto}</h1>
+      <button style={{ marginRight: '1rem' }} onClick={handleClick}>
+        notebook
+      </button>
+      <button onClick={handleClick}>smartphone</button>
+      <Produto produto={produto} />
+    </div>
   );
 };
 
