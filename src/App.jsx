@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Produto from './Produto';
 
 const App = () => {
-  const [isRunning, setIsRunning] = useState(false);
+  const [isRunning, setIsRunning] = useState(null);
   const [data, setData] = useState(null);
 
   const urlTablet = "https://ranekapi.origamid.dev/json/api/produto/tablet"
@@ -35,7 +35,7 @@ const App = () => {
 
       <div>
         <p>{isRunning}</p>
-        {data && <Produto dados={data} />}
+        {!isRunning && data && <Produto dados={data} />}
       </div>
     </>
   );
