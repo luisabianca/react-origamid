@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import UseRefStudy from './UseRefStudy';
+import UseRefStudyCarrinho from './UseRefStudyCarrinho';
 
 const App = () => {
   return (
     <div>
-      <UseRefStudy />
+      <UseRefStudyCarrinho />
     </div>
   );
 };
