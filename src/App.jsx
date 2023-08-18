@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import UseRefStudyCarrinho from './UseRefStudyCarrinho';
+import React from 'react';
+import Produto from './Produto';
+import { GlobalStorage } from './GlobalContext';
 
 const App = () => {
   return (
-    <div>
-      <UseRefStudyCarrinho />
-    </div>
+    <GlobalStorage>
+      <Produto />
+    </GlobalStorage>
   );
 };
 
