@@ -2,16 +2,15 @@ import React from 'react';
 import { GlobalContext } from './GlobalContext';
 
 const Produto = () => {
-  const global = React.useContext(GlobalContext);
-
-  function handleClick() {
-    global.setCarrinho((carrinho) => carrinho + 1);
-  }
-
+  const { dados } = React.useContext(GlobalContext);
+  if (dados === null) return null;
   return (
-    <p>
-      Total: {global.carrinho}: <button onClick={handleClick}>Adicionar</button>
-    </p>
+    <div>
+      Produto:{' '}
+      {dados.map((produto) => (
+        <li key={produto.id}>{produto.nome}</li>
+      ))}
+    </div>
   );
 };
 
