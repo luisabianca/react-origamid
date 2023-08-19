@@ -5,6 +5,7 @@ import AppUseRef from './UseRef/AppUseRef'
 import AppUseContext  from './UseContext/AppUseContext';
 import AppUseMemoAndUseCallback from './UseMemoAndUseCallback/AppUseMemoAndUseCallback'
 import AppCustomHooks from './CustomHooks/AppCustomHooks'
+import Inputs from './Forms/Inputs'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       {/* <AppUseContext /> */}
       {/* <AppUseMemoAndUseCallback /> */}
       {/* <AppCustomHooks /> */}
+      <Inputs />
     
     </>
   );
