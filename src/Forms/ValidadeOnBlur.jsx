@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import DefaultInput from './DefaultInput'
 
 const ValidadeOnBlur = () => {
   const [cep, setCep] = useState('');
@@ -28,7 +29,7 @@ const ValidadeOnBlur = () => {
 
   return (
     <form>
-      <Input
+      <DefaultInput
         label="CEP"
         id="cep"
         type="text"
@@ -37,6 +38,7 @@ const ValidadeOnBlur = () => {
         onBlur={handleBlur}
       />
       {error && <p>{error}</p>}
+      <br />
       <button>Enviar</button>
     </form>
   );

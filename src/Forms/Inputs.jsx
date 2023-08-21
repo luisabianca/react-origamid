@@ -1,14 +1,12 @@
 import React from 'react'
-import ConsumeSelect from './ConsumeSelect';
-import ValidadeOnBlur from './ValidadeOnBlur';
+import ConsumeInput from './ConsumeInput';
 
 const Inputs = () => {
   return (
     <div>
-      <ValidadeOnBlur />
-      <ValidadeOnBlur />
+      <ConsumeInput />
     </div>
-    
+
   )
 }
 

@@ -1,18 +1,30 @@
-import { useState } from "react";
-import DefaultInput from "./DefaultInput";
+import React from 'react';
+import useForm from './useForm'
+import DefaultInput from './DefaultInput';
+
 
 const ConsumeInput = () => {
-  const [nome, setNome] = useState('');
+  const cep = useForm('cep');
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    if (cep.validate()) {
+      console.log('Enviar');
+    } else {
+      console.log('Não enviar');
+    }
+  }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <DefaultInput
-        label="Nome"
-        id="nome"
+        label="CEP"
+        id="cep"
         type="text"
-        value={nome}
-        setValue={setNome}
+        placeholder="00000-000"
+        {...cep}
       />
+      <button>Enviar</button>
     </form>
   );
 };
