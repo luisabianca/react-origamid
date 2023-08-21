@@ -5,13 +5,14 @@ import Select from './Select';
 import Radio from './Radio';
 import CheckboxOneItem from './CheckboxOneItem';
 import CheckboxVariousItens from './CheckboxVariousItens';
+import ExerciseCheckbox from './ExerciseCheckbox';
 
 const Inputs = () => {
   return (
     <div>
       {/* <FetchPost />  */}
       {/* <TextArea /> */}
-      <CheckboxVariousItens />
+      <ExerciseCheckbox />
     </div>
     
   )
