@@ -6,6 +6,7 @@ import AppUseContext  from './UseContext/AppUseContext';
 import AppUseMemoAndUseCallback from './UseMemoAndUseCallback/AppUseMemoAndUseCallback'
 import AppCustomHooks from './CustomHooks/AppCustomHooks'
 import Inputs from './Forms/Inputs'
+import FetchPost from './Forms/FetchPost';
 
 const App = () => {
   return (
@@ -16,7 +17,8 @@ const App = () => {
       {/* <AppUseContext /> */}
       {/* <AppUseMemoAndUseCallback /> */}
       {/* <AppCustomHooks /> */}
-      <Inputs />
+      {/* <Inputs /> */}
+      <FetchPost />
     
     </>
   );
