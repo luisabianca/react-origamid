@@ -1,10 +1,11 @@
 import React from 'react'
 import ConsumeInput from './ConsumeInput';
+import ConsumeRadio from './ConsumeRadio';
 
 const Inputs = () => {
   return (
     <div>
-      <ConsumeInput />
+      <ConsumeRadio />
     </div>
 
   )

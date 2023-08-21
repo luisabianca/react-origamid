@@ -1,52 +1,31 @@
-import { useState } from "react";
-
-const Radio = () => {
-    const [produto, setProduto] = useState('');
-    const [cor, setCor] = useState('');
-
+const Radio = ({ pergunta, options, onChange, value, id, active }) => {
+    if (active === false) return null;
     return (
-        <form>
-            <h2>Dispositivo</h2>
-            <label>
-                <input
-                    type="radio"
-                    value="notebook"
-                    checked={produto === 'notebook'}
-                    onChange={({ target }) => setProduto(target.value)}
-                />
-                Notebook
-            </label>
-            <label>
-                <input
-                    type="radio"
-                    value="smartphone"
-                    checked={produto === 'smartphone'}
-                    onChange={({ target }) => setProduto(target.value)}
-                />
-                Smartphone
-            </label>
-
-            <h2>Cor</h2>
-            <label>
-                <input
-                    type="radio"
-                    value="azul"
-                    checked={cor === 'azul'}
-                    onChange={({ target }) => setCor(target.value)}
-                />
-                Azul
-            </label>
-            <label>
-                <input
-                    type="radio"
-                    value="vermelho"
-                    checked={cor === 'vermelho'}
-                    onChange={({ target }) => setCor(target.value)}
-                />
-                Vermelho
-            </label>
-        </form>
+      <fieldset
+        style={{
+          padding: '2rem',
+          marginBottom: '1rem',
+          border: '2px solid #eee',
+        }}
+      >
+        <legend style={{ fontWeight: 'bold' }}>{pergunta}</legend>
+        {options.map((option) => (
+          <label
+            key={option}
+            style={{ marginBottom: '1rem', fontFamily: 'monospace' }}
+          >
+            <input
+              type="radio"
+              id={id}
+              checked={value === option}
+              value={option}
+              onChange={onChange}
+            />
+            {option}
+          </label>
+        ))}
+      </fieldset>
     );
-};
+  };
 
 export default Radio;
