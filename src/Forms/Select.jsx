@@ -5,7 +5,7 @@ const Select = () => {
   return (
     <form>
       <select value={select} onChange={({ target }) => setSelect(target.value)}>
-        <option disabled value=""></option>
+        <option disabled value="">Selecione o produto</option>
         <option value="notebook">Notebook</option>
         <option value="smartphone">Smartphone</option>
         <option value="tablet">Tablet</option>
