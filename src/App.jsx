@@ -17,9 +17,7 @@ const App = () => {
       {/* <AppUseContext /> */}
       {/* <AppUseMemoAndUseCallback /> */}
       {/* <AppCustomHooks /> */}
-      {/* <Inputs /> */}
-      <FetchPost />
-    
+      <Inputs />    
     </>
   );
 };
